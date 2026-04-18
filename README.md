@@ -44,25 +44,40 @@ Restart Claude Code (or start a new session) and the skill will be listed among 
 
 ## Usage
 
-The skill auto-activates based on its description, so you don't need to invoke it manually. Just ask Claude Code to work on your Laravel API:
+Claude Code activates the skill automatically when what you ask matches its description — no manual invocation needed. Example prompts:
 
 ```
-> Add a Publisher resource with name, country and an optional website
+> Add an Invoice resource with number, amount, due date and an optional note
+> Add soft deletes to Project and expose a restore endpoint
+> Review StoreContactRequest and make sure it follows our conventions
 ```
 
-Claude Code will pick up the skill and follow the conventions: explicit `$fillable`, Form Request with array syntax validation, API Resource with `whenLoaded()`, Policy, routes split between public reads and authenticated writes, Pest tests, and so on.
+To confirm the skill is loaded, run `/skills` in Claude Code: `laravel-api` should appear in the list.
 
 ## What the skill covers
 
-- Model, migration, factory, seeder conventions
-- API Resource structure (`whenLoaded`, `when($request->routeIs(...))`, explicit fields, ISO 8601 dates)
-- Controller patterns (authorization, `$request->validated()`, eager loading, status codes)
-- Form Request validation (array syntax, `sometimes` vs `nullable`, `exists` for foreign keys)
-- Route grouping by authentication
-- Policies for ownership checks
+**Data layer**
+- Model with explicit `$fillable`, relationships, no server-controlled fields
+- Migration with `constrained()` foreign keys and correct nullability
+- Factory with Faker, seeder registered in `DatabaseSeeder`
+
+**HTTP layer**
+- Controller: authorization, `$request->validated()`, eager loading, status codes
+- API Resource: explicit fields, `whenLoaded()`, `when($request->routeIs(...))`, ISO 8601 dates
+- Routes split between public reads and authenticated writes
+
+**Validation & authorization**
+- Form Request: array syntax, `sometimes` vs `nullable`, `exists` for foreign keys, `bodyParameters()` for docs
+- Policy for ownership and non-trivial authorization
 - Custom error envelope and `BusinessException`
-- Pest tests covering CRUD, validation, authentication and authorization
-- Filtering, sorting, pagination and include conventions
+
+**Docs & tests**
+- Scribe annotations on every endpoint, config (`theme => 'elements'`, `auth.default => false`), readable cURL template
+- Pest tests for CRUD, validation, authentication, authorization
+
+**Cross-cutting**
+- Filtering, sorting, pagination, `include` conventions
+- Security checklist
 - Laravel 13 / PHP 8.3+ specifics
 
 ## License
