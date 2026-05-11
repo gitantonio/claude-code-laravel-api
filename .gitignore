@@ -2,3 +2,7 @@
 .idea/
 .vscode/
 *.swp
+
+# Banner source assets (kept locally for regeneration)
+.github/cover.png
+.github/_card-template.html

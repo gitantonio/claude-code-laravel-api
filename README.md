@@ -1,8 +1,16 @@
 # claude-code-laravel-api
 
-A [Claude Code](https://claude.com/claude-code) skill that teaches the AI the conventions for building REST APIs with Laravel, based on the book **"Laravel REST APIs: A Practical Guide"** and the companion project [BookShelf](https://github.com/gitantonio/bookshelf).
+![Claude Code Skill — laravel-api: production-ready Laravel REST API conventions](.github/book-banner.png)
 
-With this skill installed, Claude Code knows how to scaffold and modify controllers, form requests, API resources, policies, migrations, factories, seeders and Pest tests in a way that is consistent with the patterns described in the book.
+A standalone [Claude Code](https://claude.com/claude-code) skill that codifies REST API conventions for Laravel. Drop it into `.claude/skills/`, and Claude Code will scaffold and modify controllers, form requests, API resources, policies, migrations, factories, seeders, and Pest tests following these conventions.
+
+**Anyone can use it**: you don't need to have read the book it originates from. The book ([*Laravel REST APIs: A Practical Guide*](https://antonio.popolizio.it/laravel-rest-apis)) explains the reasoning behind the rules; the skill works on its own. A reference implementation lives in the companion project [BookShelf](https://github.com/gitantonio/bookshelf).
+
+## Compatibility
+
+- **Laravel** 13+
+- **PHP** 8.3+
+- **Claude Code** (any recent version that supports skills)
 
 ## What is a Claude Code skill
 
@@ -44,7 +52,7 @@ Restart Claude Code (or start a new session) and the skill will be listed among 
 
 ## Usage
 
-Claude Code activates the skill automatically when what you ask matches its description — no manual invocation needed. Example prompts:
+Claude Code activates the skill automatically when what you ask matches its description. No manual invocation needed. Example prompts:
 
 ```
 > Add an Invoice resource with number, amount, due date and an optional note
@@ -79,6 +87,14 @@ To confirm the skill is loaded, run `/skills` in Claude Code: `laravel-api` shou
 - Filtering, sorting, pagination, `include` conventions
 - Security checklist
 - Laravel 13 / PHP 8.3+ specifics
+
+## Want the book?
+
+This skill encodes the **WHAT**. The book explains the **WHY**: when to use Policies, why `$fillable` matters, how to structure tests, how to deploy to a real VPS, how to use AI without losing control. 21 chapters, hands-on, from an empty project to production.
+
+**[Get *Laravel REST APIs: A Practical Guide* on Amazon →](https://antonio.popolizio.it/laravel-rest-apis)**
+
+If this skill helps you ship faster, a review on the book makes a huge difference for an indie author.
 
 ## License
 
